@@ -1,0 +1,220 @@
+/*
+––––––––––––––––––––––––––––––––––––––––––––––––––
+/* Something of an outline
+––––––––––––––––––––––––––––––––––––––––––––––––––
+/*** CSS variables
+/*** Structure, Flexbox, Grid
+/*** Main sections with id
+/*** Map specific elements
+/*** Custom utilities
+/*** Variable-dependent classes
+/*** Media Queries
+––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
+
+
+/*--- Custom CSS variables---*/
+	:root {
+
+    /* COLORS */
+		--light: #f3f3f3;
+		--dark: #3f3f3f;
+		--bg-light: var(--light);
+		--bg-muted: var(--mute-light);
+		--bg-med-1: indianred;
+		--bg-med-2: rosybrown;
+		--bg-dark: var(--dark);
+		--text-light: var(--light);
+		--text-med-1: #80cdc1;
+		--text-med-2: darkcyan;
+		--text-dark: var(--dark);
+    --hilite: #f0ffa0;
+    --hilite-subtle: #882255;
+		--hilite-electric: slateblue;
+		--emph-light: #AA4499;
+		--emph-dark: #332288;
+    --mute-light: silver;
+    --mute-dark: dimgray;
+
+    /* FONTS */
+    --font-main: 'Raleway';
+    --font-main-fallback: 'Quattrocentro';
+    --font-title: 'Kavivanar';
+    --font-title-fallback: '';
+    --font-subtitle: '';
+    --font-subtitle-fallback: ;
+
+  }
+
+/*--- Structure, F̶l̶e̶x̶b̶o̶x̶, Grid ---*/
+
+  body {
+		font-family: var(--font-main), var(--font-main-fallback);
+	}
+	header {
+		border-bottom: 2px solid var(--bg-dark);
+	}
+	footer {
+		padding: 24px;
+		padding-left: 8px;
+		padding-right: 8px;
+		background-color: var(--bg-dark);
+	}
+	h1,h2,h3,h4,h5,h6 {
+		font-family: var(--font-title), var(--font-title-fallback);
+		margin-top: 0.2em;
+		margin-bottom:0.2em;
+	}
+	p {
+		font-size: 0.8em;
+		margin: 8px;
+	}
+	a {
+		color: var(--hilite-med);
+	}
+	a:hover {
+		text-decoration: none;
+		opacity: 0.8;
+	}
+	label {
+		padding-top:1px;
+		padding-bottom:2px;
+	}
+
+	#main-container {
+	  padding: 0;
+	}
+	/* For devices larger than 400px */
+	@media (min-width: 400px) {
+	  #main-container {
+			width: 100%;
+		}
+	}
+	@media (min-width: 960px) {
+	  #main-container {
+			width: 80%;
+		}
+	}
+	@media (min-width: 1200px) {
+		#main-container {
+			width: 100%;
+		}
+	}
+
+/*--- Map specific elements ---*/
+  #map {
+    border-left: 2px solid var(--bg-dark);
+  	border-right: 2px solid var(--bg-dark);
+		height: 68vh;
+		width: 100%;
+  }
+  #legend{
+		padding: 9px 3px 9px 18px;
+		font-size: 1em;
+		background: rgba(255, 255, 255, 0.8);
+		box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
+		border-radius: 6px;
+		min-width: 120px;
+		max-width: 160px;
+	}
+	#legend h5 {
+		font-size: 2rem;
+		margin-bottom:12px;
+	}
+	#legend span {
+		width: 24px;
+		height: 24px;
+		float: left;
+		margin: 0 8px 0px 0;
+	}
+	#legend label {
+		font-size: 1.2em;
+	}
+	#legend label:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+  /* Other Leaflet elements */
+	.leaflet-tooltip {
+		min-width: 140px;
+		white-space: normal;
+	}
+
+	.leaflet-container {
+		background: var(--bg-light);
+	}
+/*--- Custom utility classes ---*/
+
+  /* Styling */
+  .boost {
+    font-size: 1.2em;
+  }
+	.mute {
+		opacity: 0.8;
+	}
+	.align-right {
+		text-align: right;
+	}
+	.align-center {
+		text-align: center;
+	}
+	.unstyled {
+		list-style: none;
+	}
+	.nowrap {
+		white-space: nowrap;
+	}
+/*--- Variable-dependent classes ---*/
+
+  /* Positioning */
+
+
+  /* Colors */
+	.bg-light {
+		background-color: var(--bg-light);
+	}
+	.bg-muted {
+		background-color: var(--mute-light);
+	}
+	.bg-med-1 {
+		background-color: var(--bg-med-1);
+	}
+  .bg-med-2 {
+		background-color: var(--bg-med-2);
+	}
+	.bg-dark {
+		background-color: var(--bg-dark);
+	}
+	.text-light {
+		color: var(--text-light);
+	}
+	.text-med-1 {
+		color: var(--text-med-1);
+	}
+	.text-med-2 {
+		color: var(--text-med-2);
+	}
+	.text-dark {
+		color: var(--text-dark);
+	}
+	.hilite {
+		color: var(--hilite);
+	}
+	.hilite-subtle {
+		color: var(--hilite-subtle);
+	}
+	.hilite-electric {
+		color: var(--hilite-electric);
+	}
+	.emph-light {
+		color: var(--emph-light);
+	}
+	.emph-dark {
+		color: var(--emph-dark);
+	}
+
+/* ----------- */
+/* --- END --- */
+/* ----------- */

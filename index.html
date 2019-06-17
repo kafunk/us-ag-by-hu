@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<!-- Basic Page Needs
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8">
+<meta name="description" content="webmap">
+<meta name="author" content="kafunk">
+
+<!-- Mobile Specific Metas
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<title>A portrait of agriculture in the conterminous US, circa 2010-2012</title>
+
+<!-- FONTS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <!-- Font Awesome -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
+
+  <!-- Google Web Fonts -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600|Kavivanar" rel="stylesheet" type="text/css">
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <!-- Hosted -->
+
+  <!-- Local -->
+  <link rel="stylesheet" href="vendor/skeleton/css/normalize.css">
+  <link rel="stylesheet" href="vendor/skeleton/css/skeleton.css">
+  <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+
+  <!-- Custom -->
+  <link href="css/styles.css" rel="stylesheet">
+
+<!-- ICONS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <!-- Favicon -->
+  <!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
+
+</head>
+
+<body id="page-top">
+
+<!-- Primary page layout
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <header>
+    <div class="bg-med-1">
+      <div class="container">
+        <div class="row">
+          <!-- Title -->
+        	<div class="twelve columns">
+            <h2><span class="nowrap">A portrait of agriculture</span> in <span class="nowrap">the conterminous US</span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-med-2">
+      <div class="container">
+        <div class="row">
+          <!-- Subtitle -->
+          <div class="twelve columns align-right">
+            <h5><span>Crop data by water drainage subbasin, circa 2010</span></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="main">
+    <div class="bg-muted">
+      <!-- Main map canvas-->
+      <div id="main-container" class="container bg-light">
+        <div id='map' class="row"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <!-- Basic info -->
+      <div class="row">
+        <p class="align-center text-light text-small">This map was authored in April 2018 by <a target="_blank" href="https://kafunk.github.io">Katrina A. Funk</a> in partial fulfillment of <a target="_blank" href="https://newmapsplus.as.uky.edu">NMP</a> MAP673 Module 02.</p>
+      </div>
+      <div class="row">
+        <p class="align-center text-light">Data sourced from the Environmental Protection Agency's <a target="_blank" href="https://www.epa.gov/enviroatlas/enviroatlas-dynamic-data-matrix">EnviroAtlas</a>, in turn based on the USDA's 2010 Cropland Data Layers. Watershed boundary lines <a target="_blank" href="https://water.usgs.gov/GIS/metadata/usgswrd/XML/ds573_wbdhuc8.xml">from 2011</a> were used for maximum consistency with overlaying data.</p>
+      </div>
+        <!-- <p class="align-center text-light">Data from the <a target="_blank" href="https://www.nass.usda.gov">US Dept of Agriculture</a>; specifically, the <a target="_blank" href="https://www.nass.usda.gov/Publications/AgCensus/2012/">watershed-specific statistics</a> derived from the results of their <a target="_blank" href="https://www.nass.usda.gov/Publications/AgCensus/2017/">2012 Census of Agriculture</a>, which were released in Nov 2014</a>.</p> -->
+      <!-- <div class="row">
+        <!-- <p class="align-center text-light"><em>Note: </em>Watershed statistics from the more recent <a target="_blank" href="https://www.nass.usda.gov/Publications/AgCensus/2017/">2017 Census of Agriculture</a> are expected to be released by July 25th, 2019. Following that time, I intend to add the updated data as well as create an interface through which the user can explore watershed-specific spatial and statistical change over the course of the intervening 5 years.</p> -->
+      <!-- </div> -->
+      <!-- results of my 2012 query: http://quickstats.nass.usda.gov/results/6B3A52CE-26CF-3493-A16D-0D680CA892AB -->
+      <!-- results of my 2007 query: http://quickstats.nass.usda.gov/results/6F6A9E08-07EA-3295-A11D-21E8130287DC -->
+      <!-- and 2013? http://quickstats.nass.usda.gov/results/457A1876-6D2E-3845-BCF9-E58C4F52870D -->
+    </div>
+  </footer>
+
+<!-- Dynamically inserted map elements
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <!-- Legend -->
+	<div id="legend"></div>
+
+  <!-- UI Controls -->
+	<div id="ui-controls">
+
+    <!-- Dropdown -->
+  	<label>Select content to visualize:</label>
+		<select id='dropdown'>
+			<option value="Fruit crop acreage">Fruit crop acreage</option>
+			<option value="Vegetable crop acreage">Vegetable crop acreage</option>
+			<option value="Grain crop acreage">Grain crop acreage</option>
+			<option value="Cotton crop acreage">Cotton crop acreage</option>
+			<option value="Fruit and veggie combined acreage">Fruit and veggie combined acreage</option>
+			<option value="Grain and cotton combined acreage">Grain and cotton combined acreage</option>
+			<option value="Total combined acreage">Total combined acreage</option>
+      <!--  -->
+      <option value="Fruit crop annual yield">Fruit crop annual yield</option>
+      <option value="Vegetable crop annual yield">Vegetable crop annual yield</option>
+      <option value="Grain crop annual yield">Grain crop annual yield</option>
+      <option value="Cotton crop annual yield">Cotton crop annual yield</option>
+      <option value="Fruit and veggie combined annual yield">Fruit and veggie combined annual yield</option>
+      <option value="Grain and cotton combined annual yield">Grain and cotton combined annual yield</option>
+      <option value="Total combined annual yield">Total combined annual yield</option>
+      <!--  -->
+		</select>
+
+  </div>
+
+<!-- JavaScript
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <!-- Local -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="vendor/chroma/chroma.min.js"></script>
+
+  <!-- Hosted -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.2/proj4leaflet.js"></script>
+	<script src="https://unpkg.com/simple-statistics@5.2.1/dist/simple-statistics.min.js"></script>
+
+  <!-- Custom -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>
