@@ -200,6 +200,8 @@
 		// add the control to the map
 		uiControl.addTo(map);
 
+    L.DomUtil.removeClass(uiControl.getContainer(), "hidden");
+
 	}
 
 	function addLegend() {
@@ -224,7 +226,9 @@
 		// add the empty legend div to the map
 		legendControl.addTo(map);
 
-	}
+    L.DomUtil.removeClass(legendControl.getContainer(), "hidden");
+
+  }
 
   function updateMap(dataLayer) { // [called initially after geometry drawn, then again on WIDGET CHANGE EVENT such that colors can update without reloading geometry)
 

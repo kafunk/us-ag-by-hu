@@ -166,6 +166,9 @@
 	.nowrap {
 		white-space: nowrap;
 	}
+	.hidden {
+		display: none;
+	}
 /*--- Variable-dependent classes ---*/
 
   /* Positioning */
