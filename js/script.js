@@ -123,8 +123,8 @@
 		zoomControl: true, // false,
     normedBy: 'AREASQMI'
   }
-  var selectedLayer = 'Fruit crop acreage',
-      attributeVal = 'FRUIT_ACRES',
+  var selectedLayer = 'Total combined acreage',
+      attributeVal = 'TOTAL_ACRES',
       normedBy = defaults.normedBy;
   var mapOptions = getOptions();
 
