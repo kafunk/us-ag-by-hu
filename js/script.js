@@ -120,7 +120,7 @@
 		scrollWheelZoom: true, // false,
 		zoomSnap: .1,
 		dragging: true, // false,
-		zoomControl: true, // false,
+		zoomControl: false,
     normedBy: 'AREASQMI'
   }
   var selectedLayer = 'Total combined acreage',
